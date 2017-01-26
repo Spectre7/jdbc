@@ -1,2 +1,3 @@
 # jdbc
-JDBC Example
+JDBC Example  
+Esempio di utilizzo di JDBC e Properties in java.
