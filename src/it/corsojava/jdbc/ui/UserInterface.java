@@ -10,6 +10,12 @@ import javax.swing.JTextField;
 import it.corsojava.jdbc.conf.JDBCUtils;
 
 import javax.swing.JButton;
+<<<<<<< HEAD
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+=======
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -17,6 +23,7 @@ import javax.swing.JSlider;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+>>>>>>> 700187457e1b6f403d25de01a6add0c254963a21
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -25,7 +32,13 @@ import java.awt.event.ActionEvent;
 public class UserInterface {
 
 	private JFrame frame;
+<<<<<<< HEAD
+	private JLabel label;
+	private JLabel lblId;
+	private JTextField textField;
+=======
 	private JTextField textField_1;
+>>>>>>> 700187457e1b6f403d25de01a6add0c254963a21
 	private JLabel lblInserimentoIdSu;
 
 	/**
@@ -60,6 +73,22 @@ public class UserInterface {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+<<<<<<< HEAD
+		JButton btnSave = new JButton("SAVE");
+		btnSave.addActionListener(new ActionListener() {  //è un ascoltatore di un qualche evento
+			public void actionPerformed(ActionEvent e) {
+				
+				Properties properties=JDBCUtils.getAppProperties();
+				
+ 				String DB_URL="jdbc:mysql://localhost/clienti";
+				String Driver= "com.mysql.jdbc.Driver";
+				
+				try {
+					Class.forName(Driver);
+				} catch (ClassNotFoundException ex) {
+					ex.printStackTrace();
+				}
+=======
 				
 		JButton btnSave = new JButton("Save");
 		
@@ -77,11 +106,55 @@ public class UserInterface {
 					ex.printStackTrace();
 				}			
 				
+>>>>>>> 700187457e1b6f403d25de01a6add0c254963a21
 				
 				Connection conn;
 				Statement stmt;
 				
 				try {
+<<<<<<< HEAD
+					conn= DriverManager.getConnection(DB_URL,"root","root");
+					stmt=conn.createStatement();
+					
+					String id=textField.getText();
+					
+					stmt.executeUpdate("insert into tabellaDaJava (ID) values ("+id+")"); //sto costruendo la stringa sql
+					
+					stmt.close();
+					conn.close();
+				} catch (SQLException ex) {
+					JOptionPane.showMessageDialog(null, "Attenzione ID esistente");
+					ex.printStackTrace();
+				}
+				
+	
+			}
+
+		
+			
+		});
+		
+		
+		
+		btnSave.setBounds(135, 138, 89, 23);
+		frame.getContentPane().add(btnSave);
+		
+		label = new JLabel("");
+		label.setBounds(65, 189, 46, 14);
+		frame.getContentPane().add(label);
+		
+		lblId = new JLabel("ID");
+		lblId.setBounds(133, 79, 46, 14);
+		frame.getContentPane().add(lblId);
+		
+		textField = new JTextField();
+		textField.setBounds(180, 76, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		lblInserimentoIdSu = new JLabel("Inserimento ID su tabellaDaJava");
+		lblInserimentoIdSu.setBounds(105, 33, 244, 14);
+=======
 					conn= DriverManager.getConnection(DB_URL,"studente","studente");
 					stmt=conn.createStatement();
 					
@@ -117,6 +190,7 @@ public class UserInterface {
 		
 		lblInserimentoIdSu = new JLabel("Inserimento ID su tabellaDaJava");
 		lblInserimentoIdSu.setBounds(93, 29, 237, 15);
+>>>>>>> 700187457e1b6f403d25de01a6add0c254963a21
 		frame.getContentPane().add(lblInserimentoIdSu);
 	}
 }
